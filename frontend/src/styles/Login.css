@@ -1,10 +1,11 @@
 /* Основной фон страницы */
 body {
-    background-color: #f0f8ff; /* Светло-голубой фон страницы */
-    font-family: Arial, sans-serif;
+    background-color: #f8fafc; /* Нежный светло-голубой фон */
+    font-family: 'Roboto', Arial, sans-serif; /* Современный шрифт */
     color: #333;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
 /* Контейнер всей страницы */
@@ -13,23 +14,33 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    min-height: 100vh; /* Центрируем содержимое по вертикали */
+    padding: 20px;
 }
 
 /* Контейнер формы */
 .form-container {
     background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
     width: 100%;
+    max-width: 400px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Заголовок */
 .title {
-    font-size: 2rem;
-    color: #4682b4; /* Темно-голубой */
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    color: #4a90e2; /* Яркий голубой */
+    margin-bottom: 1.5rem;
+    font-weight: bold;
 }
 
 /* Стиль для формы */
@@ -42,63 +53,102 @@ body {
 
 /* Контейнер для каждого input поля */
 .input-container {
-    margin: 0 auto;
-    margin-bottom: 1rem;
-    width: 80%; /* Или фиксированную ширину, например, 250px */
+    margin-bottom: 1.2rem;
+    width: 100%;
+    max-width: 300px;
 }
 
 /* Стиль для label */
 .input-label {
     display: block;
-    margin-bottom: 0.5rem;
-    color: #5f9ea0; /* Голубовато-зеленый */
+    margin-bottom: 0.4rem;
+    color: #4a90e2; /* Яркий голубой */
+    font-weight: bold;
 }
 
 /* Стиль для input полей */
 .input-field {
-    width: 100%; /* Поля занимают всю доступную ширину контейнера */
-    max-width: 250px; /* Ограничьте максимальную ширину */
-    padding: 0.8rem;
-    border-radius: 4px;
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 6px;
     border: 1px solid #b0c4de;
     font-size: 1rem;
-    color: #333;
+    color: #555;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #4a90e2;
+    box-shadow: 0px 0px 8px rgba(74, 144, 226, 0.3);
+    outline: none;
 }
 
 /* Стиль для кнопок */
 .login-form button {
-    width: 20%;
-    padding: 0.8rem;
-    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.9rem;
+    border-radius: 6px;
     border: none;
     font-size: 1rem;
     cursor: pointer;
     margin-top: 0.8rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
 }
 
 /* Основная кнопка входа */
 .login-form .submit-btn {
-    background-color: #4682b4; /* Темно-голубой */
+    background-color: #4a90e2; /* Яркий голубой */
     color: white;
+}
+
+.login-form .submit-btn:hover {
+    background-color: #357abd;
+    transform: scale(1.05);
 }
 
 /* Кнопки для входа как продавец и для регистрации */
 .login-form .secondary-btn {
     background-color: #5f9ea0; /* Голубовато-зеленый */
     color: white;
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
+}
+
+.login-form .secondary-btn:hover {
+    background-color: #468b8c;
+    transform: scale(1.05);
 }
 
 /* Ошибки */
 .error-message {
-    color: red;
-    font-size: 0.9rem;
+    color: #d9534f;
+    font-size: 0.95rem;
     margin-top: 1rem;
+    font-weight: bold;
+    animation: shake 0.5s ease-in-out;
 }
 
 /* Сообщение о загрузке */
 .loading-message {
-    color: #4682b4; /* Темно-голубой */
+    color: #4a90e2;
     font-size: 1rem;
     font-weight: bold;
+}
+
+/* Анимация тряски для ошибок */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    50% {
+        transform: translateX(4px);
+    }
+    75% {
+        transform: translateX(-4px);
+    }
 }

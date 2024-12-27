@@ -71,10 +71,10 @@ CREATE TABLE Cart (
 
 CREATE VIEW CartView AS
 SELECT 
-    c.id AS cart_id,
+    ca.id AS cart_id,
     cu.full_name AS customer_name,
     p.name AS product_name,
-    ca.quantity AS product_quantity,
+    ca.quantity AS product_quantity
 FROM 
     Cart ca
 JOIN 
