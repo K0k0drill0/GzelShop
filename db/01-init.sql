@@ -87,12 +87,10 @@ RETURNS TRIGGER AS $$
 DECLARE
     new_address_id INT;
 BEGIN
-    -- Добавляем запись в Customers_Addresses с пустыми полями
     INSERT INTO Customers_Addresses (city, street, house, building, entrance, apartment, floor)
     VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL)
     RETURNING id INTO new_address_id;
 
-    -- Обновляем customer_address_id у нового покупателя
     NEW.customer_address_id := new_address_id;
 
     RETURN NEW;

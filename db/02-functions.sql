@@ -287,24 +287,20 @@ AS $$
 DECLARE
     var_category_id INT;
 BEGIN
-    -- Ищем категорию
     SELECT id INTO var_category_id
     FROM Category
     WHERE LOWER(TRIM(name)) = LOWER(TRIM(p_category_name));
 
-    -- Если категория не найдена, создаем новую
     IF var_category_id IS NULL THEN
         INSERT INTO Category (name, description)
         VALUES (p_category_name, p_category_description)
         RETURNING id INTO var_category_id;
     ELSE
-        -- Если категория найдена, обновляем её описание (опционально)
         UPDATE Category
         SET description = COALESCE(p_category_description, description)
         WHERE id = var_category_id;
     END IF;
 
-    -- Добавляем продукт в таблицу Product
     INSERT INTO Product (name, description, price, quantity, category_id, image)
     VALUES (p_name, p_description, p_price, p_quantity, var_category_id, p_image);
 END;
@@ -315,7 +311,6 @@ RETURNS VOID AS $$
 DECLARE
     var_order_id INT;
 BEGIN
-    -- Проверяем, что для всех товаров в корзине достаточно количества на складе
     IF EXISTS (
         SELECT 1
         FROM Cart c
@@ -325,12 +320,10 @@ BEGIN
         RAISE EXCEPTION 'Not enough stock for one or more products';
     END IF;
 
-    -- Создаем новый заказ для пользователя
     INSERT INTO "Order" (customer_id, order_date, status_id)
     VALUES (p_customer_id, CURRENT_TIMESTAMP, 1) -- Статус заказа по умолчанию (например, "Ожидание")
     RETURNING id INTO var_order_id;
 
-    -- Переносим товары из корзины в Order_Product
     INSERT INTO Order_Product (order_id, product_id, product_price, quantity)
     SELECT 
         var_order_id, 
@@ -344,13 +337,11 @@ BEGIN
     WHERE 
         c.customer_id = p_customer_id;
 
-    -- Уменьшаем количество товаров в таблице Product
     UPDATE Product
     SET quantity = Product.quantity - c.quantity
     FROM Cart c
     WHERE Product.id = c.product_id AND c.customer_id = p_customer_id;
 
-    -- Удаляем товары из корзины
     DELETE FROM Cart
     WHERE Cart.customer_id = p_customer_id;
 END;
