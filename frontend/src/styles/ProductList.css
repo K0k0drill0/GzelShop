@@ -1,0 +1,120 @@
+/* Основной контейнер списка продуктов */
+.product-list-container {
+    padding: 2rem;
+    background-color: #f0f8ff; /* Светло-голубой фон */
+}
+
+/* Контейнер категории */
+.category-container {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #ffffff; /* Белый фон */
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок категории */
+.category-title {
+    font-size: 1.8rem;
+    color: #4682b4; /* Темно-голубой */
+    margin-bottom: 0.5rem;
+}
+
+/* Описание категории */
+.category-description {
+    font-size: 1.2rem;
+    color: #5f9ea0; /* Голубовато-зеленый */
+    margin-bottom: 1rem;
+}
+
+/* Контейнер для продуктов */
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+/* Карточка продукта */
+.product-card {
+    width: calc(25% - 1.5rem);
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+/* Анимация при наведении */
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Изображение продукта */
+.product-image {
+    width: 100%;
+    aspect-ratio: 1.2;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+/* Название продукта */
+.product-name {
+    font-size: 1.4rem;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+/* Описание продукта */
+.product-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+/* Цена продукта */
+.product-price {
+    font-size: 1rem;
+    color: #4682b4; /* Темно-голубой */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: auto;
+}
+
+/* Наличие на складе */
+.product-stock {
+    font-size: 1rem;
+    color: #5f9ea0; /* Голубовато-зеленый */
+    margin-bottom: 0.5rem;
+}
+
+/* Кнопка "Добавить в корзину" */
+.add-to-cart-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    background-color: #4682b4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    width: auto;
+    white-space: nowrap;
+    text-align: center;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Сообщение "Нет в наличии" */
+.out-of-stock {
+    font-size: 1rem;
+    color: red;
+}
+
+/* Сообщение об отсутствии продуктов */
+.no-products-message {
+    font-size: 1.4rem;
+    text-align: center;
+    color: #333;
+}

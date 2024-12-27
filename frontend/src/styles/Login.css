@@ -1,0 +1,104 @@
+/* Основной фон страницы */
+body {
+    background-color: #f0f8ff; /* Светло-голубой фон страницы */
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер всей страницы */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Контейнер формы */
+.form-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+/* Заголовок */
+.title {
+    font-size: 2rem;
+    color: #4682b4; /* Темно-голубой */
+    margin-bottom: 1rem;
+}
+
+/* Стиль для формы */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Контейнер для каждого input поля */
+.input-container {
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    width: 80%; /* Или фиксированную ширину, например, 250px */
+}
+
+/* Стиль для label */
+.input-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #5f9ea0; /* Голубовато-зеленый */
+}
+
+/* Стиль для input полей */
+.input-field {
+    width: 100%; /* Поля занимают всю доступную ширину контейнера */
+    max-width: 250px; /* Ограничьте максимальную ширину */
+    padding: 0.8rem;
+    border-radius: 4px;
+    border: 1px solid #b0c4de;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Стиль для кнопок */
+.login-form button {
+    width: 20%;
+    padding: 0.8rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0.8rem;
+}
+
+/* Основная кнопка входа */
+.login-form .submit-btn {
+    background-color: #4682b4; /* Темно-голубой */
+    color: white;
+}
+
+/* Кнопки для входа как продавец и для регистрации */
+.login-form .secondary-btn {
+    background-color: #5f9ea0; /* Голубовато-зеленый */
+    color: white;
+    margin-top: 0.5rem;
+}
+
+/* Ошибки */
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Сообщение о загрузке */
+.loading-message {
+    color: #4682b4; /* Темно-голубой */
+    font-size: 1rem;
+    font-weight: bold;
+}

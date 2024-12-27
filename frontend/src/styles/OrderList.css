@@ -1,0 +1,95 @@
+/* Общий стиль страницы заказов */
+.order-list-page {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+.order-list-heading {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* Сообщение об отсутствии заказов */
+.no-orders-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Контейнер для списка заказов */
+.order-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Карточка заказа */
+.order-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ID заказа */
+.order-id {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+/* Список товаров в заказе */
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Стиль для одного товара */
+.order-item {
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+}
+
+.order-item:first-of-type {
+    border-top: none;
+}
+
+/* Название товара */
+.product-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Цена товара */
+.product-price {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Количество товара */
+.product-quantity {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Сообщения загрузки и ошибок */
+.loading-message {
+    text-align: center;
+    color: #007bff;
+}
+
+.error-message {
+    text-align: center;
+    color: #dc3545;
+}

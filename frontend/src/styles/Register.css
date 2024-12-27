@@ -1,0 +1,96 @@
+/* Общий стиль страницы регистрации */
+.register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* Контейнер формы */
+.register-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+.register-heading {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* Стили формы */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Группы полей */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Метка */
+.form-label {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Поля ввода */
+.form-input {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    border-color: #235d9a;
+    outline: none;
+}
+
+/* Кнопка */
+.form-button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4682b4;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.form-button:hover {
+    background-color: #235d9a;
+}
+
+/* Сообщения */
+.error-message {
+    color: #dc3545;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.loading-message {
+    color: #007bff;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.success-message {
+    color: #28a745;
+    font-size: 0.9rem;
+    text-align: center;
+}
