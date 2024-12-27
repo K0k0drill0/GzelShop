@@ -69,7 +69,19 @@ CREATE TABLE Cart (
     quantity INTEGER NOT NULL
 );
 
--- Функция для автоматического создания пустого адреса
+CREATE VIEW CartView AS
+SELECT 
+    c.id AS cart_id,
+    cu.full_name AS customer_name,
+    p.name AS product_name,
+    ca.quantity AS product_quantity,
+FROM 
+    Cart ca
+JOIN 
+    Customer cu ON ca.customer_id = cu.id
+JOIN 
+    Product p ON ca.product_id = p.id;
+
 CREATE OR REPLACE FUNCTION add_default_address()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -87,57 +99,45 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Создаем триггер для таблицы Customer
 CREATE TRIGGER trigger_add_default_address
 BEFORE INSERT ON Customer
 FOR EACH ROW
 EXECUTE FUNCTION add_default_address();
 
--- Функция для увеличения количества в таблице Cart
 CREATE OR REPLACE FUNCTION update_or_insert_cart()
 RETURNS TRIGGER AS $$
 BEGIN
-    -- Проверяем, существует ли уже запись с таким же product_id и customer_id
     UPDATE Cart
     SET quantity = quantity + NEW.quantity
     WHERE customer_id = NEW.customer_id AND product_id = NEW.product_id;
 
-    -- Если запись обновилась (ROW_COUNT() > 0), то ничего не делаем дальше
     IF FOUND THEN
-        RETURN NULL; -- Пропускаем добавление новой записи
+        RETURN NULL;
     END IF;
 
-    -- Если записи нет, добавляем новую
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
--- Триггер для таблицы Cart
 CREATE TRIGGER trigger_update_or_insert_cart
 BEFORE INSERT ON Cart
 FOR EACH ROW
 EXECUTE FUNCTION update_or_insert_cart();
 
--- Функция триггера для удаления связанных записей
 CREATE OR REPLACE FUNCTION delete_product_dependencies()
 RETURNS TRIGGER AS $$
 BEGIN
-    -- Удаление записей из Order_Product
     DELETE FROM Order_Product
     WHERE product_id = OLD.id;
 
-    -- Удаление записей из Cart
     DELETE FROM Cart
     WHERE product_id = OLD.id;
 
-    -- Продолжаем удаление из таблицы Product
     RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
 
--- Триггер для удаления связанных записей при удалении из Product
 CREATE TRIGGER trigger_delete_product_dependencies
 BEFORE DELETE ON Product
 FOR EACH ROW
 EXECUTE FUNCTION delete_product_dependencies();
-
